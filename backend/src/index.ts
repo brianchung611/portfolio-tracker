@@ -5,6 +5,12 @@ import dotenv from 'dotenv';
 // Load environment variables
 dotenv.config();
 
+// Check required env vars at startup
+if (!process.env.JWT_SECRET) {
+  console.error('❌ JWT_SECRET is required');
+  process.exit(1);
+}
+
 const app: Application = express();
 const PORT = process.env.PORT || 3001;
 

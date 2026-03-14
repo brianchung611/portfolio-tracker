@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { MigrationBuilder, ColumnDefinitions } from 'node-pg-migrate';
+export const shorthands = undefined;
 
-export const shorthands: ColumnDefinitions | undefined = undefined;
-
-export async function up(pgm: MigrationBuilder): Promise<void> {
+export async function up(pgm) {
   pgm.createTable('holdings', {
     id: {
       type: 'serial',
@@ -60,6 +58,6 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
   pgm.createIndex('holdings', 'coin_id');
 }
 
-export async function down(pgm: MigrationBuilder): Promise<void> {
+export async function down(pgm) {
   pgm.dropTable('holdings');
 }
