@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import authRoutes from './routes/auth';
 
 // Load environment variables
 dotenv.config();
@@ -22,6 +23,8 @@ app.use(express.json());
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Portfolio Tracker API is running' });
 });
+
+app.use('/api/auth', authRoutes);
 
 // Start server
 app.listen(PORT, () => {
