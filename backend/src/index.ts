@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth';
+import { authMiddleware } from './middleware/auth';
 
 // Load environment variables
 dotenv.config();
@@ -25,6 +26,8 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+
+app.use(authMiddleware);
 
 // Start server
 app.listen(PORT, () => {
